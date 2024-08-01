@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Login</title>
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/loginandregister.css">
+</head>
+<script type="text/javascript">
+function formValidation(){
+	var name = document.login.uname;
+	var password = document.login.pass;
+	
+	if(Emptyfield(name,password))
+	{
+		if(allLetter(name)) 
+		{
+				return true;	
+		}
+	}
+	return false;
+}
+
+	function Emptyfield(uname,pass){ 
+		var name_len = uname.value.length;
+		var pass_len = pass.value.length;
+
+		if (name_len == 0 || pass_len == 0)
+		{
+			alert("Fields should not be empty ");
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+
+
+	function allLetter(uname){ 
+		var letters = /^[A-Za-z]+$/;
+		if(uname.value.match(letters))
+		{
+			return true;
+		}
+		else{
+			alert('Username must have alphabet characters only');
+			uname.focus();
+			return false;
+		}
+	}
+</script>
+<body>  
+    <form action="login.php" name="login" method="post" class="login-form" onSubmit="return formValidation();" >
+        <h1 class="login-title">Login</h1>
+
+        <div class="input-box">
+            <i class="bx bxs-user"></i>
+            <input type="text" name="uname" placeholder="Username">
+        </div>
+        <div class="input-box">
+            <i class="bx bxs-lock-alt"></i>
+            <input type="password" name="pass" placeholder="Password">
+        </div>
+
+        <button class="login-btn" type="submit" name="submit">Login</button>
+
+        <p class="register">
+            Don't have an account?
+            <a href="signinreg.html">Register</a>
+        </p>
+    </form>
+</body>
+</html>

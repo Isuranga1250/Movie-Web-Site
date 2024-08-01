@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Add Movies</title>
+<link rel="stylesheet" href="css/tables.css">
+</head>
+<script type="text/javascript">
+function formValidation(){
+	var name = document.addm.Mname;
+	var des = document.addm.description;
+	var img= document.addm.image;
+	var category = document.addm.categories;
+	var duration = document.addm.duration;
+	
+	if(Emptyfield(name,des,img,category,duration))
+	{
+		return true;
+	}else{
+		return false;
+	}
+
+}
+
+	function Emptyfield(name,des,img,category,duration){ 
+		var name_len = name.value.length;
+		var des_len = des.value.length;
+		var img_len = img.value.length;
+		var category_len = category.value.length;
+		var dur_len=duration.value.length;
+		
+
+		if (name_len == 0 || des_len == 0|| img_len == 0|| category_len == 0|| dur_len == 0)
+		{
+			alert("Fields should not be empty ");
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+
+	
+</script>
+<body>
+	<div class="menu-box">
+	<form method="post" enctype="multipart/form-data"  name="addm" action="insertmovies.php" onSubmit="return formValidation();">
+  <table width="534" border="2" cellspacing="3" cellpadding="2">
+    <tr>
+      <th width="200" height="34" scope="row"><label for="name">Movie Name</label></th>
+      <td width="400"><input type="text" name="Mname" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Description</th>
+      <td><label for="des"></label>
+      <textarea name="description" cols="45" rows="5"></textarea></td>
+    </tr>
+    <tr>
+      <th scope="row">Image</th>
+      <td><p>
+        <label for="img"></label>
+        <label for="imgName"></label>
+        <label for="img2"></label>
+        <input type="file" name="image"/>
+      </p></td>
+    </tr>
+    <tr>
+      <th scope="row">Category</th>
+      <td><label for="Category"></label>
+		<select class="btndel" name= "categories">
+		<option value ="Sinhala">Sinhala</option>
+		<option value ="English">English</option>
+		<option value ="Hindi">Hindi</option>
+		<option value ="Tamil">Tamil</option>
+		</select></td>
+    </tr>
+    <tr>
+      <th scope="row">Duration</th>
+      <td><label for="duration"></label>
+      <input type="text" name="duration" /></td>
+    </tr>
+    <tr>
+      <td><input type="submit" class="btndel" name="submit" value="Submit" /></td>
+      <td><input type="reset" class="btndel" name="cancle" value="Reset" /></td>
+    </tr>
+  </table>
+
+</form>
+</div>
+</body>
+</html>
